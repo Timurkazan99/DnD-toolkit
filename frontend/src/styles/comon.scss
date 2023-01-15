@@ -1,0 +1,41 @@
+html {
+  background: #20222c;
+  > * {
+    background: inherit;
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:not([href]):not([class]) {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:not([href]):not([class]):hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.stat-button {
+  margin-left: -1px;
+  min-width: 46px;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background: rgba(96, 107, 133, 0.5);
+}

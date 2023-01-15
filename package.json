@@ -1,0 +1,19 @@
+{
+  "name": "dnd-toolkit",
+  "version": "1.0.0",
+  "description": "Helper for dnd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timurkazan99/DnD-toolkit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timurkazan99/DnD-toolkit/issues"
+  },
+  "homepage": "https://github.com/Timurkazan99/DnD-toolkit#readme"
+}

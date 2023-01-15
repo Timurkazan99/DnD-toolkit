@@ -1,0 +1,51 @@
+.sidebar {
+  margin: 0 0.5rem;
+  width: 15%;
+  border-radius: 20px;
+  background: rgba(96, 106, 133, 0.5);
+  display: flex;
+  flex-direction: column;
+
+  .order-button {
+    border: none;
+    border-radius: 0 0 20px 20px;
+    border-top: #20222C solid 1px;
+    &:first-child {
+      border-bottom: #20222C solid 1px;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+}
+
+.initiative-cell {
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 14px;
+  padding: 0 1rem;
+  background: rgba(96, 107, 133, 0.5);
+  height: 28px;
+  width: 100%;
+
+  &.active {
+    background: rgba(71, 118, 230, 0.3);
+  }
+
+  .initiative-input {
+    color: white;
+    height: 20px;
+    width: 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    align-self: center;
+    border: rgba(0, 0, 0, .25) 2px solid ;
+    background: rgba(71, 118, 230, 0);
+  }
+
+  label {
+    margin-left: 1rem;
+  }
+}
+
