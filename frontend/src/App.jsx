@@ -9,10 +9,8 @@ function App() {
   return (
     <ContextProvider>
       <BrowserRouter>
-        <div className="h-100">
-          <Navbar />
-          <AppRouter />
-        </div>
+        <Navbar />
+        <AppRouter />
       </BrowserRouter>
     </ContextProvider>
   );
