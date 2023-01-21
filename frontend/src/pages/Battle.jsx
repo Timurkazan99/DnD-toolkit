@@ -2,14 +2,16 @@ import React from 'react';
 import BattleOrder from "../components/BattleOrder.jsx";
 import BattleArea from "../components/BattleArea.jsx";
 import ThrowHistory from "../components/ThrowHistory.jsx";
+import AddCard from "../components/modal/AddCard.jsx";
 
 
 const Battle = () => {
   return (
-    <div className="d-flex" style={{height: 'calc(100% - 54px)', paddingTop: '0.5rem'}}>
+    <div className="wrapper">
       <BattleOrder/>
       <BattleArea/>
       <ThrowHistory/>
+      <AddCard/>
     </div>
   );
 };

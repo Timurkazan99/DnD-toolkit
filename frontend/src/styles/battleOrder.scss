@@ -1,18 +1,35 @@
 .sidebar {
-  margin: 0 0.5rem;
+  height: calc(100VH - 54px);
   width: 15%;
+  margin: 0 .5rem;
   border-radius: 20px;
   background: rgba(96, 106, 133, 0.5);
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 54px;
+}
+
+.battleOrder {
+
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #20222c;
+
+    .initiative-button {
+      border: none;
+      width: 100%;
+      border-radius: 0 0 0 0;
+    }
+  }
 
   .order-button {
     border: none;
-    border-radius: 0 0 20px 20px;
-    border-top: #20222C solid 1px;
+    border-radius: 0 20px 0 0;
     &:first-child {
-      border-bottom: #20222C solid 1px;
-      border-radius: 20px 20px 0 0;
+
+      border-radius: 20px 0 0 0;
     }
   }
 }
@@ -26,7 +43,6 @@
   padding: 0 1rem;
   background: rgba(96, 107, 133, 0.5);
   height: 28px;
-  width: 100%;
 
   &.active {
     background: rgba(71, 118, 230, 0.3);
@@ -42,6 +58,12 @@
     align-self: center;
     border: rgba(0, 0, 0, .25) 2px solid ;
     background: rgba(71, 118, 230, 0);
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   label {

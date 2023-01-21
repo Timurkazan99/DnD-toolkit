@@ -1,18 +1,17 @@
 import React from 'react';
-import PlayersArea from "./PlayersArea.jsx";
-import EnemysArea from "./EnemysArea.jsx";
 import "../styles/battleArea.scss";
+import CardsList from "./CardsList.jsx";
 
 const BattleArea = () => {
   return (
-    <div className="flex-grow-1 d-flex flex-column">
-      <PlayersArea/>
+    <div className="battle-area">
+      <CardsList type="players"/>
       <div className="enemy-header">
         <div className="line"/>
         <label>Враги</label>
         <div className="line"/>
       </div>
-      <EnemysArea/>
+      <CardsList type="enemies"/>
     </div>
   );
 };

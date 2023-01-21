@@ -1,18 +1,23 @@
+.battle-area {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
 .players-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: flex-start;
   width: 100%;
 }
 
-.enemys-area {
-  height: 50%;
+.enemies-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: flex-start;
   width: 100%;
-}
-
-.player-card {
-  height: 118px;
-  width: 300px;
-  color: white;
-  border-radius: 20px;
-  background: rgba(71, 118, 230, .3);
 }
 
 .hp-button {
@@ -42,5 +47,28 @@
 
   label {
     margin: 0 1rem;
+  }
+}
+
+.button-wrapper {
+  width: 300px;
+  height: 118px;
+  display: flex;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.add-card {
+  height: 58px;
+  width: 180px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  align-self: center;
+  background: rgba(71, 118, 230, 0.3);
+  transition: .3s;
+
+  &:hover {
+    background: rgb(71, 118, 230, 1);
   }
 }
