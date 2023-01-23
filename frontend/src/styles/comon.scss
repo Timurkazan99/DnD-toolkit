@@ -43,3 +43,7 @@ p {
   width: 100%;
   background: rgba(96, 107, 133, 0.5);
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
