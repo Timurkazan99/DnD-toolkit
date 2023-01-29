@@ -14,7 +14,11 @@ const EnemyList = ({name, enemyId, lastIndex}) => {
 
   return (
     <>
-      <ul className="enemy-list">
+      <div className="d-flex justify-content-between">
+        <span>Миньоны</span>
+        <button className="add-button" onClick={onClick}><Icon icon="add"/></button>
+      </div>
+      <ul className="custom-list">
         {creatures.map(({id, index}) => (
             <EnemyItem
               key={id}
@@ -24,11 +28,7 @@ const EnemyList = ({name, enemyId, lastIndex}) => {
               enemyId={enemyId}
             />
         ))}
-        <li>
-          <button className="add-creature" onClick={onClick}><Icon icon="add"/></button>
-        </li>
       </ul>
-
     </>
   );
 };

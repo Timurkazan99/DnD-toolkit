@@ -3,35 +3,46 @@ import {Card} from "react-bootstrap";
 import Icon from "./Icons.jsx";
 import "../styles/card.scss";
 import EnemyList from "./EnemyList.jsx";
+import {actions as cardActions} from "../store/reducers/CardSlice";
+import InteractiveInput from "./InteractiveInput.jsx";
+import {onShow} from "../store/reducers/UiSlice";
+import {batch, useDispatch} from "react-redux";
+import AbilityList from "./AbilityList.jsx";
 
 const skills = ['armor', 'attention', 'speed', 'initiativeBonus'];
 const abilities = ['strength', 'dexterity', 'constitution', 'wisdom', 'intelligence', 'charisma']
 
 const PlayerCard = ({card}) => {
-  const [hp, setHp] = useState(10);
-
-  const changeHp = (change) => setHp(hp + change);
+  const dispatch = useDispatch()
 
   return (
     <Card className="player-card">
-      <Card.Header className="d-flex justify-content-between">
-        <label>{card.name}</label>
+      <Card.Header className="player-card-header">
+        <a
+          className="card-name"
+          onClick={() => {
+            batch(() => {
+              dispatch(onShow("editCard"))
+              dispatch(cardActions.setActive(card.id))
+            });
+          }}
+        >
+          {card.name}
+        </a>
         {
           card.type === "player" && (
             <div>
-              <button
-                className="hp-button"
-                onClick={() => changeHp(-1)}
-              >
-                -
-              </button>
-              <label className="me-1">{hp}</label>
-              <button
-                className="hp-button"
-                onClick={() => changeHp(1)}
-              >
-                +
-              </button>
+              <Icon
+                icon="hp"
+                className="me-1"
+              />
+              <InteractiveInput
+                inputClass="hp-input"
+                id={card.id}
+                value={card.hp}
+                name="hp"
+                action={cardActions.updateCard}
+              />
             </div>
           )
         }
@@ -56,6 +67,10 @@ const PlayerCard = ({card}) => {
       {
         (card.type === "enemy") && (
           <Card.Footer className="player-card-footer">
+            <AbilityList
+              enemyId={card.id}
+            />
+            <hr/>
             <EnemyList
               name={card.name}
               enemyId={card.id}

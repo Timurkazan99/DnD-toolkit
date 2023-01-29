@@ -46,9 +46,6 @@ const getType = (count, dice, modifier, result) => {
 export const throwDice = (str) => {
   const [count, dice, modifier] = getThrowInfo(str);
 
-  console.log(str);
-  console.log(count, dice, modifier);
-
   let result = 0;
 
   for (let i = 0; i < count; i += 1) {

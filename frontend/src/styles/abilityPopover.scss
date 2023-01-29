@@ -1,0 +1,21 @@
+@import "mixins";
+
+.edit-button {
+  @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1));
+}
+
+.ability-popover {
+
+  background: #20222c;
+
+  .popover-arrow {
+    &::after {
+      border-bottom-color: rgba(71, 118, 230, 0.3);
+    }
+  }
+
+  .ability-popover-header {
+    background: rgba(71, 118, 230, 0.3);
+    color: white;
+  }
+}

@@ -8,10 +8,10 @@ const EnemyItem = ({name, index, id, enemyId}) => {
   const onClick = () => dispatch(creatureActions.delCreature({id, enemyId}));
 
   return (
-    <li className="enemy-item">
+    <li className="custom-item">
       <span>
         <button
-          className="enemy-delete"
+          className="enemy-delete me-1"
           onClick={onClick}
         >
           <Icon icon="delete"/>
@@ -19,7 +19,7 @@ const EnemyItem = ({name, index, id, enemyId}) => {
         {name} {index}
       </span>
       <span>
-        <Icon icon="hp"/>
+        <Icon icon="hp" className="me-1"/>
         <input className="enemy-hp" type="text"/>
       </span>
     </li>

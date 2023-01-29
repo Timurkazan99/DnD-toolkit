@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import "../styles/throwHistory.scss"
 import {InputGroup, Form, Button} from "react-bootstrap";
 import {throwDice} from "../utils/diceRoll";
@@ -9,15 +9,17 @@ const ThrowHistory = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState();
   const throws = useSelector((state) => state.ui.throwHistory);
+  const throwsBox = useRef(null);
 
   const onClick = () => {
     const result = throwDice(value);
     dispatch(addThrow(result));
+    throwsBox.current.scrollTop = 999999;
   }
 
   return (
-    <div className="sidebar throwHistory p-3">
-      <div className="throw-container flex-grow-1">
+    <div className="sidebar throwHistory">
+      <div ref={throwsBox} className="throw-container">
         {
           throws.map(({throwDice, type}) => (
             <div className={`throw-cell ${type}`}>{throwDice}</div>

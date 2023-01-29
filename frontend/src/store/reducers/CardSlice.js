@@ -1,5 +1,6 @@
 import {createSlice, createEntityAdapter, current} from '@reduxjs/toolkit';
 import {actions as creatureActions} from "./CreatureSlice"
+import {actions as abilityActions} from "./AbilitiesSlice"
 import {rollDice} from "../../utils/diceRoll";
 
 const cardsAdapter = createEntityAdapter();
@@ -9,8 +10,6 @@ const initialState = cardsAdapter.getInitialState({
     active: null,
     selected: null,
 });
-
-
 
 export const cardSlice = createSlice({
     name: 'cards',
@@ -44,6 +43,16 @@ export const cardSlice = createSlice({
               const creaturesIds = current(state.entities[payload.enemyId].creaturesIds)
               const newCreaturesIds = creaturesIds.filter(({id}) => id !== payload.id);
               cardsAdapter.updateOne(state, {id: payload.enemyId, changes: {creaturesIds: newCreaturesIds}})
+          })
+          .addCase(abilityActions.addAbility, (state, {payload}) => {
+              const enemy = current(state.entities[payload.enemyId])
+              const newAbilitiesIds = [...enemy.abilitiesIds, payload.id]
+              cardsAdapter.updateOne(state, {id: payload.enemyId, changes: {abilitiesIds: newAbilitiesIds}})
+          })
+          .addCase(abilityActions.removeAbility, (state, {payload}) => {
+              const abilitiesIds = current(state.entities[payload.enemyId].abilitiesIds)
+              const newAbilitiesIds = abilitiesIds.filter(({id}) => id !== payload.id);
+              cardsAdapter.updateOne(state, {id: payload.enemyId, changes: {creaturesIds: newAbilitiesIds}})
           })
     }
 });

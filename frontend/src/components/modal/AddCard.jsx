@@ -1,26 +1,36 @@
-import React from 'react';
-import {Button, Modal} from "react-bootstrap";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {Modal} from "react-bootstrap";
+import {batch, useDispatch, useSelector} from "react-redux";
 import {onHide} from "../../store/reducers/UiSlice";
 import FormCard from "./FormCard.jsx";
 import {useFormik} from "formik";
 import {actions as cardActions} from "../../store/reducers/CardSlice";
 import {rollDice} from "../../utils/diceRoll";
+import {getActiveCard, getModalName} from "../../store/selectors";
+import CommonFooter from "./CommonFooter.jsx";
 
-const cardMap = {
+const modalMap = {
   addEnemy: {
     title: "Добавить врага",
     values: {
       type: "enemy",
       creaturesIds: [],
+      abilitiesIds: [],
       lastCreatureIndex: 0,
-    }
+    },
+    edit: false
   },
   addPlayer: {
     title: "Добавить игрока",
     values: {
-      type: "player"
-    }
+      type: "player",
+      hp: 10
+    },
+    edit: false
+  },
+  editCard: {
+    title: "Изменить карточку",
+    edit: true
   }
 }
 
@@ -40,25 +50,51 @@ const initialValues = {
 
 const AddCard = () => {
   const dispatch = useDispatch();
-  const modalName = useSelector((state) => state.ui.modalName);
-  const card = cardMap?.[modalName];
-  const show = card ?? false;
+  const modalName = useSelector(getModalName);
+  const card = useSelector(getActiveCard);
+  const modal = modalMap?.[modalName];
+  const show = modal ?? false;
 
   const formik = useFormik({
-    initialValues
+    initialValues,
   });
 
   const close = () => {
-    formik.setValues(initialValues);
-    dispatch(onHide())
+    dispatch(onHide());
   };
+  
+  useEffect(() => {
+    if(modal?.edit) {
+      formik.setValues(card, false);
+    } else {
+      formik.setValues(initialValues, false);
+    }
+  }, [modalName])
 
-  const onClick = (e) => {
+  const addCard = (e) => {
     e.preventDefault();
     const initiative = rollDice(20) + formik.values.initiativeBonus;
-    const values = {...formik.values, id: Date.now(), ...card.values, initiative};
-    dispatch(cardActions.addCard(values));
-    close();
+    const values = {...formik.values, id: Date.now(), ...modal.values, initiative};
+    batch(() => {
+      dispatch(cardActions.addCard(values));
+      dispatch(onHide());
+    });
+  }
+
+  const updateCard = (e) => {
+    e.preventDefault();
+    batch(() => {
+      dispatch(cardActions.updateCard({id: card.id, changes: {...formik.values}}));
+      dispatch(onHide());
+    });
+  }
+
+  const removeCard = (e) => {
+    e.preventDefault();
+    batch(() => {
+      dispatch(cardActions.removeCard(card.id));
+      dispatch(onHide());
+    });
   }
 
   return (
@@ -68,15 +104,18 @@ const AddCard = () => {
       centered
     >
       <Modal.Header closeButton>
-        <h5>{card?.title}</h5>
+        <h5>{modal?.title}</h5>
       </Modal.Header>
       <Modal.Body>
         <FormCard formik={formik}/>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-primary" onClick={onClick}>
-          Добавить
-        </Button>
+        <CommonFooter
+          edit={modal?.edit}
+          add={addCard}
+          update={updateCard}
+          remove={removeCard}
+        />
       </Modal.Footer>
     </Modal>
   );

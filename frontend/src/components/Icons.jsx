@@ -10,16 +10,21 @@ const statusMap = {
   'hp': '/assets/img/hp.svg#hp',
   'delete': '/assets/img/delete.svg#delete',
   'previous': '/assets/img/previous.svg#previous',
-  'next': '/assets/img/next.svg#next'
+  'next': '/assets/img/next.svg#next',
+  'edit': '/assets/img/edit.svg#edit'
 }
 
 const Icon = ({icon, className}) => {
   const logo = statusMap[icon];
   return (
-    <svg className={`bi-icon ${className}`} style={{height: '16px', width: '16px'}}>
+    <svg className={`bi-icon ${className}`}>
       <use href={logo}></use>
     </svg>
   );
 };
+
+Icon.defaultProps = {
+  className: null
+}
 
 export default Icon;

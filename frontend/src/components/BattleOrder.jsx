@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Button} from "react-bootstrap";
 import "../styles/battleOrder.scss";
 import InitiativeCell from "./InitiativeCell.jsx";
@@ -11,12 +11,26 @@ const BattleOrder = () => {
   const dispatch = useDispatch();
   const players = useSelector(selectors.selectAll);
   const [active, setActive] = useState(0);
+  const initiativeBox = useRef(null);
   const index = active % players.length;
   const activeIndex = index >= 0 ? index : (index + players.length);
-  console.log(activeIndex)
 
-  const changeActive = (change) => setActive(active + change);
-  const throwInitiative = () => dispatch(cardActions.throwInitiative());
+  const changeActive = (change) => {
+    setActive(active + change)
+  };
+  const throwInitiative = () => {
+    dispatch(cardActions.throwInitiative())
+    setActive(0);
+  };
+
+  useEffect(() => {
+    const cell = document.querySelector(".initiative-cell");
+    if(cell) {
+      const cellStyles = window.getComputedStyle(cell);
+      const cellHeight = parseFloat(cellStyles['marginTop']) + parseFloat(cellStyles['marginBottom']) + cell?.offsetHeight;
+      initiativeBox.current.scrollTop = activeIndex * cellHeight;
+    }
+  }, [activeIndex])
 
   return (
     <div className="sidebar battleOrder">
@@ -43,9 +57,12 @@ const BattleOrder = () => {
           <Icon icon="next"/>
         </Button>
       </div>
-      <div className="d-flex flex-column flex-grow-1 px-1">
+      <div
+        ref={initiativeBox}
+        className="d-flex flex-column flex-grow-1 px-1 overflow-auto"
+      >
         {[...players]
-          .sort((a, b) => parseFloat(a.initiative) - parseFloat(b.initiative))
+          .sort((a, b) => parseFloat(b.initiative) - parseFloat(a.initiative))
           .map(({id, name, initiative}, index) => (
           <InitiativeCell
             active={index === activeIndex}
@@ -55,7 +72,6 @@ const BattleOrder = () => {
           />
         ))}
       </div>
-
     </div>
   );
 };
