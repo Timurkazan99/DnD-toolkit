@@ -1,21 +1,37 @@
 @import "mixins";
 
 .edit-button {
-  @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1));
+  @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1), 3px);
 }
 
 .ability-popover {
 
   background: #20222c;
+  border: 1px solid rgb(31 43 73);
 
   .popover-arrow {
     &::after {
-      border-bottom-color: rgba(71, 118, 230, 0.3);
+      border-bottom-color: rgb(43, 60, 100);
     }
   }
 
   .ability-popover-header {
     background: rgba(71, 118, 230, 0.3);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::before {
+      border-bottom-color: rgba(43, 60, 100);
+    }
+
+    .close-button {
+      @include icon-button(rgba(71, 118, 230, 0), darkred, 50%);
+    }
+  }
+
+  .ability-popover-body {
     color: white;
   }
 }

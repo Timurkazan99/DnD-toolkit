@@ -47,3 +47,14 @@ p {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.delete-button {
+  border: none;
+  background: none;
+  color: white;
+  padding: 0;
+
+  &:hover {
+    color: darkred;
+  }
+}

@@ -23,6 +23,7 @@
   background: rgba(71, 118, 230, .3);
   margin-right: 24px;
   margin-bottom: 24px;
+  box-shadow: 0 4px rgba(0, 0, 0, .25);
 
   .player-card-header {
     display: flex;
@@ -89,20 +90,13 @@
       }
 
       .enemy-delete {
-        border: none;
-        background: none;
-        color: white;
-        padding: 0;
-
-        &:hover {
-          color: darkred;
-        }
+        @include icon-button(rgba(71, 118, 230, 0), darkred, 50%);
       }
     }
   }
 
   .add-button {
-    @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1))
+    @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1), 3px)
   }
 }
 

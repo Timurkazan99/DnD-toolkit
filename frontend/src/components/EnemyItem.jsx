@@ -9,13 +9,13 @@ const EnemyItem = ({name, index, id, enemyId}) => {
 
   return (
     <li className="custom-item">
+      <button
+        className="enemy-delete me-1"
+        onClick={onClick}
+      >
+        <Icon icon="delete"/>
+      </button>
       <span>
-        <button
-          className="enemy-delete me-1"
-          onClick={onClick}
-        >
-          <Icon icon="delete"/>
-        </button>
         {name} {index}
       </span>
       <span>

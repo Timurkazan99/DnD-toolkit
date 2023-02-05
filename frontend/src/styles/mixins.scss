@@ -16,7 +16,7 @@
   }
 }
 
-@mixin icon-button ($bg-color, $hv-color) {
+@mixin icon-button ($bg-color, $hv-color, $brd-radius) {
   color: white;
   border: none;
   padding: 0;
@@ -29,7 +29,7 @@
 
   &:hover {
     background: $hv-color;
-    border-radius: 3px;
+    border-radius: $brd-radius;
   }
 }
 

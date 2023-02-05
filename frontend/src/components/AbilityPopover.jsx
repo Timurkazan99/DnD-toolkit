@@ -26,12 +26,18 @@ const AbilityPopover = forwardRef(({ id, name, description, setShow, ...props}, 
       <Popover.Header
         className="ability-popover-header"
       >
-        <span>{name}</span>
         <button
           className="edit-button"
           onClick={onClick}
         >
           <Icon icon="edit"/>
+        </button>
+        <span>{name}</span>
+        <button
+          className="close-button"
+          onClick={() => setShow(false)}
+        >
+          <Icon icon="delete"/>
         </button>
       </Popover.Header>
       <Popover.Body
