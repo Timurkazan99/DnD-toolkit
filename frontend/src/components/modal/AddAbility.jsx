@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import {batch, useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
 import {onHide} from "../../store/reducers/UiSlice";
-import {FloatingLabel, Form, Modal} from "react-bootstrap";
+import {Form} from "react-bootstrap";
+import Modal from "../../atoms/Modal";
+import FloatingLabel from "../../atoms/FloatingLabel";
 import {getActiveAbility, getModalName} from "../../store/selectors";
 import {actions as abilityActions} from "../../store/reducers/AbilitiesSlice";
 import CommonFooter from "./CommonFooter.jsx";
@@ -87,24 +89,24 @@ const AddAbility = () => {
             label="Название"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="text"
               name="name"
+              placeholder=" "
               value={formik.values.name}
               onChange={formik.handleChange}
-              placeholder="Название"
             />
           </FloatingLabel>
           <FloatingLabel
             label="Описание"
             className="mb-3"
           >
-            <Form.Control
-              as="textarea"
+            <textarea
               name="description"
+              placeholder=" "
+              rows="5"
               value={formik.values.description}
               onChange={formik.handleChange}
-              placeholder="Описание"
             />
           </FloatingLabel>
         </Form>

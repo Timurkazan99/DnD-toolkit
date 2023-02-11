@@ -1,5 +1,6 @@
 import React from 'react';
-import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
+import FloatingLabel from "../../atoms/FloatingLabel";
+import {Col, Form, Row} from "react-bootstrap";
 
 const FormCard = ({formik}) => {
   return (
@@ -8,11 +9,11 @@ const FormCard = ({formik}) => {
         label="Имя"
         className="mb-3"
       >
-        <Form.Control
+        <input
           name="name"
           value={formik.values.name}
           onChange={formik.handleChange}
-          placeholder="Имя"
+          placeholder=" "
         />
       </FloatingLabel>
       <hr/>
@@ -22,7 +23,7 @@ const FormCard = ({formik}) => {
             label="Сила"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="strength"
               value={formik.values.strength}
@@ -34,7 +35,7 @@ const FormCard = ({formik}) => {
             label="Ловкость"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="dexterity"
               value={formik.values.dexterity}
@@ -46,7 +47,7 @@ const FormCard = ({formik}) => {
             label="Выносливость"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="constitution"
               value={formik.values.constitution}
@@ -60,7 +61,7 @@ const FormCard = ({formik}) => {
             label="Интелект"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="intelligence"
               value={formik.values.intelligence}
@@ -72,7 +73,7 @@ const FormCard = ({formik}) => {
             label="Мудрость"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="wisdom"
               value={formik.values.wisdom}
@@ -83,7 +84,7 @@ const FormCard = ({formik}) => {
           <FloatingLabel
             label="Харизма"
           >
-            <Form.Control
+            <input
               type="number"
               name="charisma"
               value={formik.values.charisma}
@@ -100,7 +101,7 @@ const FormCard = ({formik}) => {
             label="Скорость"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="speed"
               value={formik.values.speed}
@@ -112,7 +113,7 @@ const FormCard = ({formik}) => {
             label="Класс Брони"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="armor"
               value={formik.values.armor}
@@ -126,7 +127,7 @@ const FormCard = ({formik}) => {
             label="Пас. внимание"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="attention"
               value={formik.values.attention}
@@ -138,7 +139,7 @@ const FormCard = ({formik}) => {
             label="Инициатива"
             className="mb-3"
           >
-            <Form.Control
+            <input
               type="number"
               name="initiativeBonus"
               value={formik.values.initiativeBonus}
