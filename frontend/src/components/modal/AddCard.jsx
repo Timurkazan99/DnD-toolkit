@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Modal} from "react-bootstrap";
+import Modal from "../../atoms/Modal"
 import {batch, useDispatch, useSelector} from "react-redux";
 import {onHide} from "../../store/reducers/UiSlice";
 import FormCard from "./FormCard.jsx";
@@ -8,6 +8,7 @@ import {actions as cardActions} from "../../store/reducers/CardSlice";
 import {rollDice} from "../../utils/diceRoll";
 import {getActiveCard, getModalName} from "../../store/selectors";
 import CommonFooter from "./CommonFooter.jsx";
+import "../../styles/customModal.scss";
 
 const modalMap = {
   addEnemy: {
@@ -48,21 +49,15 @@ const initialValues = {
   initiativeBonus: 0
 };
 
-const AddCard = () => {
+const AddCard = ({modalName}) => {
   const dispatch = useDispatch();
-  const modalName = useSelector(getModalName);
   const card = useSelector(getActiveCard);
   const modal = modalMap?.[modalName];
-  const show = modal ?? false;
 
   const formik = useFormik({
     initialValues,
   });
 
-  const close = () => {
-    dispatch(onHide());
-  };
-  
   useEffect(() => {
     if(modal?.edit) {
       formik.setValues(card, false);
@@ -98,11 +93,7 @@ const AddCard = () => {
   }
 
   return (
-    <Modal
-      show={show}
-      onHide={close}
-      centered
-    >
+    <>
       <Modal.Header closeButton>
         <h5>{modal?.title}</h5>
       </Modal.Header>
@@ -117,7 +108,7 @@ const AddCard = () => {
           remove={removeCard}
         />
       </Modal.Footer>
-    </Modal>
+    </>
   );
 };
 

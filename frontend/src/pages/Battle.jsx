@@ -2,8 +2,8 @@ import React from 'react';
 import BattleOrder from "../components/BattleOrder.jsx";
 import BattleArea from "../components/BattleArea.jsx";
 import ThrowHistory from "../components/ThrowHistory.jsx";
-import AddCard from "../components/modal/AddCard.jsx";
-import AddAbility from "../components/modal/AddAbility.jsx";
+import CommonModal from "../components/modal/CommonModal.jsx";
+
 
 const Battle = () => {
   return (
@@ -11,8 +11,7 @@ const Battle = () => {
       <BattleOrder/>
       <BattleArea/>
       <ThrowHistory/>
-      <AddCard/>
-      <AddAbility/>
+      <CommonModal/>
     </div>
   );
 };

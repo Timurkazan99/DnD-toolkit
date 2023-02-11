@@ -1,0 +1,33 @@
+@import "mixins";
+
+.custom-modal {
+  background: $second-color;
+  color: $text-color;
+
+  .modal-header {
+    border-bottom: $base-color 1px solid;
+  }
+
+  .modal-footer {
+    border-top: $base-color 1px solid;
+  }
+
+  input, textarea {
+    background: $inactive-color;
+    border: $active-color 1px solid;
+    color: $text-color;
+    border-radius: 5px;
+
+    &:focus {
+      border: lighten($active-color, 20%) 1px solid;
+    }
+
+    &:focus ~ span,
+    &:not(&:placeholder-shown) ~ span{
+      background: $inactive-color;
+      border-left: $active-color 1px solid;
+      border-right: $active-color 1px solid;
+      color: $text-color;
+    }
+  }
+}

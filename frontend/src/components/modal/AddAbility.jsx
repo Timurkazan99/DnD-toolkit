@@ -8,6 +8,7 @@ import FloatingLabel from "../../atoms/FloatingLabel";
 import {getActiveAbility, getModalName} from "../../store/selectors";
 import {actions as abilityActions} from "../../store/reducers/AbilitiesSlice";
 import CommonFooter from "./CommonFooter.jsx";
+import "../../styles/customModal.scss";
 
 const modalMap = {
   addAbility: {
@@ -25,21 +26,15 @@ const initialValues = {
   description: "",
 }
 
-const AddAbility = () => {
+const AddAbility = ({modalName}) => {
   const dispatch = useDispatch();
-  const modalName = useSelector(getModalName);
   const ability = useSelector(getActiveAbility);
   const enemyId = useSelector((state) => state.cards.selected);
   const modal = modalMap?.[modalName];
-  const show = modal ?? false;
 
   const formik = useFormik({
     initialValues
   });
-
-  const close = () => {
-    dispatch(onHide());
-  };
 
   useEffect(() => {
     if(modal?.edit) {
@@ -75,11 +70,7 @@ const AddAbility = () => {
   }
 
   return (
-    <Modal
-      show={show}
-      onHide={close}
-      centered
-    >
+    <>
       <Modal.Header closeButton>
         <h5>{modal?.title}</h5>
       </Modal.Header>
@@ -119,7 +110,7 @@ const AddAbility = () => {
           remove={removeAbility}
         />
       </Modal.Footer>
-    </Modal>
+    </>
   );
 };
 
