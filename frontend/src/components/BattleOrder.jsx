@@ -35,27 +35,24 @@ const BattleOrder = () => {
   return (
     <div className="sidebar battleOrder">
       <div className="order-header">
-        <Button
-          className="order-button"
-          variant="outline-light"
+        <button
+          className="custom-button order-button"
           onClick={() => changeActive(-1)}
         >
           <Icon icon="previous"/>
-        </Button>
-        <Button
-          className="initiative-button"
-          variant="outline-light"
+        </button>
+        <button
+          className="custom-button initiative-button"
           onClick={throwInitiative}
         >
           Бросить инициативу
-        </Button>
-        <Button
-          className="order-button"
-          variant="outline-light"
+        </button>
+        <button
+          className="custom-button order-button"
           onClick={() => changeActive(1)}
         >
           <Icon icon="next"/>
-        </Button>
+        </button>
       </div>
       <div
         ref={initiativeBox}

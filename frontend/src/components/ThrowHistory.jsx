@@ -32,13 +32,12 @@ const ThrowHistory = () => {
           value={value}
           onChange={({target}) => setValue(target.value)}
         />
-        <Button
-          className="dice-button"
-          variant="outline-light"
+        <button
+          className="custom-button dice-button"
           onClick={onClick}
         >
           Roll
-        </Button>
+        </button>
       </InputGroup>
     </div>
   );

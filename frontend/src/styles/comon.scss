@@ -1,5 +1,7 @@
+@import "mixins";
+
 html {
-  background: #20222c;
+  background: $base-color;
   > * {
     background: inherit;
   }
@@ -10,21 +12,21 @@ html {
 }
 
 a {
-  color: #fff;
+  color: $text-color;
   text-decoration: none;
 
   &:hover {
-    color: #fff;
+    color: $text-color;
     text-decoration: none;
   }
 
   &:not([href]):not([class]) {
-    color: #fff;
+    color: $text-color;
     text-decoration: none;
   }
 
   &:not([href]):not([class]):hover {
-    color: #fff;
+    color: $text-color;
     text-decoration: none;
   }
 }
@@ -41,7 +43,7 @@ p {
 .line {
   height: 1px;
   width: 100%;
-  background: rgba(96, 107, 133, 0.5);
+  background: $second-color;
 }
 
 ::-webkit-scrollbar {
@@ -51,10 +53,30 @@ p {
 .delete-button {
   border: none;
   background: none;
-  color: white;
+  color: $text-color;
   padding: 0;
 
   &:hover {
     color: darkred;
+  }
+}
+
+.custom-button {
+  border: $inactive-color 1px solid;
+  border-radius: 20px;
+  background: transparent;
+  color: $text-color;
+  padding: 0.5rem;
+
+  &:hover {
+    background: $active-color;
+  }
+
+  &.delete {
+    border: darkred 1px solid;
+
+    &:hover {
+      background: darkred;
+    }
   }
 }

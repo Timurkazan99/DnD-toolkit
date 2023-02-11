@@ -1,3 +1,5 @@
+@import "mixins";
+
 .battle-area {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
 .hp-button {
   border: none;
   background: none;
-  color: white;
+  color: $text-color;
   padding: 0;
 
   &:first-child {
@@ -33,7 +35,7 @@
 
 .enemy-header {
   display: flex;
-  color: white;
+  color: $text-color;
   font-size: 32px;
   justify-content: center;
   justify-items: center;
@@ -41,7 +43,7 @@
   .line {
     align-self: center;
     height: 3px;
-    border: rgba(96, 107, 133, 0.5);
+    border: $second-color;
     border-radius: 1.5px;
   }
 
@@ -63,14 +65,14 @@
   width: 180px;
   border-radius: 20px;
   border: none;
-  color: white;
+  color: $text-color;
   align-self: center;
-  background: rgba(71, 118, 230, 0.3);
+  background: $second-color;
   transition: .15s;
   box-shadow: 0 4px rgba(0, 0, 0, .25);
 
   &:hover {
-    color: #000;
-    background: #f8f9fa;
+    color: $text-color;
+    background: $active-color;
   }
 }

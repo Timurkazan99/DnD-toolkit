@@ -1,7 +1,7 @@
 @import "mixins";
 
 .ability-box {
-  background: rgba(71, 118, 230, 0.3);
+  background: lighten($inactive-color, 20%);
   height: 33px;
   width: 35px;
   display: flex;
@@ -18,9 +18,9 @@
 
 .player-card {
   width: 300px;
-  color: white;
+  color: $text-color;
   border-radius: 20px;
-  background: rgba(71, 118, 230, .3);
+  background: $inactive-color;
   margin-right: 24px;
   margin-bottom: 24px;
   box-shadow: 0 4px rgba(0, 0, 0, .25);
@@ -28,7 +28,26 @@
   .player-card-header {
     display: flex;
     justify-content: space-between;
-    padding: .5rem;
+    padding: 0;
+
+    .card-name {
+      padding: 0.5rem;
+      transition: .2s;
+      border-radius: 20px 20px 0 0;
+      flex: 1;
+
+      &.player {
+        border-radius: 20px 0 0 0;
+      }
+
+      &:hover {
+        background: $active-color;
+      }
+    }
+
+    .card-hp {
+      padding: 0.5rem;
+    }
   }
 
   .player-card-body {
@@ -37,17 +56,6 @@
 
   .player-card-footer {
     padding: .5rem;
-  }
-
-  .card-name {
-    padding: 0 5px;
-    transition: .2s;
-
-    &:hover {
-      color: black;
-      background: #fff;
-      border-radius: 5px;
-    }
   }
 
   .hp-input {
@@ -61,14 +69,13 @@
   .custom-list {
     margin: .5rem 0 0 0;
     padding: 0;
-    border: 1px white;
     border-radius: 5px;
 
     li {
       list-style-type: none;
 
       &:nth-of-type(2n-1) {
-        background: rgba(71, 118, 230, .3);;
+        background: lighten($inactive-color, 20%);
       }
     }
 
@@ -76,27 +83,31 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 .25rem;
+      padding: 2px .25rem;
 
       .enemy-hp {
         margin-left: .25rem;
-        color: white;
+        color: $text-color;
         width: 36px;
         border-radius: 5px;
         text-align: center;
         align-self: center;
-        border: rgba(0, 0, 0, .25) 2px solid ;
-        background: rgba(71, 118, 230, 0.3);
+        border: $inactive-color 1px solid ;
+        background: lighten($inactive-color, 20%);
+
+        &:focus-visible {
+          outline: none;
+        }
       }
 
       .enemy-delete {
-        @include icon-button(rgba(71, 118, 230, 0), darkred, 50%);
+        @include icon-button(transparent, darkred, 50%);
       }
     }
   }
 
   .add-button {
-    @include icon-button(rgba(71, 118, 230, 0), rgb(71, 118, 230, 1), 3px)
+    @include icon-button($inactive-color, $active-color, 3px)
   }
 }
 

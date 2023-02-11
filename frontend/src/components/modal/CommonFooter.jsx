@@ -8,20 +8,20 @@ const CommonFooter = ({edit, add, remove, update}) => {
         !edit ?
           (
             <>
-              <Button variant="outline-primary" onClick={add}>
+              <button className="custom-button accept" onClick={add}>
                 Добавить
-              </Button>
+              </button>
             </>
           )
           :
           (
             <>
-              <Button variant="outline-danger" onClick={remove}>
+              <button className="custom-button delete" onClick={remove}>
                 Удалить
-              </Button>
-              <Button variant="outline-primary" onClick={update}>
+              </button>
+              <button className="custom-button accept" onClick={update}>
                 Изменить
-              </Button>
+              </button>
             </>
           )
       }

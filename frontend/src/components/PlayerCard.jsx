@@ -19,7 +19,7 @@ const PlayerCard = ({card}) => {
     <Card className="player-card">
       <Card.Header className="player-card-header">
         <a
-          className="card-name"
+          className={card.type === "player" ? `card-name player` : 'card-name'}
           onClick={() => {
             batch(() => {
               dispatch(onShow("editCard"))
@@ -31,7 +31,7 @@ const PlayerCard = ({card}) => {
         </a>
         {
           card.type === "player" && (
-            <div>
+            <div className="card-hp">
               <Icon
                 icon="hp"
                 className="me-1"

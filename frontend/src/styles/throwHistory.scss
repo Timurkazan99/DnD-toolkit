@@ -1,31 +1,33 @@
+@import "mixins";
+
 .dice-group {
-  color: white;
+  color: $text-color;
   border-radius: 0 0 20px 20px;
   align-self: center;
   border: rgba(0, 0, 0, .25) 1px solid;
-  background: rgba(71, 118, 230, 0.3);
+  background: $inactive-color;
   width: 100%;
-}
 
-.dice-input {
-  border-radius: 0 0 0 20px;
-  background: rgba(71, 118, 230, 0);
-  border: none;
-  color: white;
+  .dice-input {
+    border-radius: 0 0 0 20px;
+    background: $inactive-color;
+    border: none;
+    color: $text-color;
 
-  &:focus {
-    background: rgba(71, 118, 230, 0.3);
-    color: white;
-    box-shadow: none;
+    &:focus {
+      background: $active-color;
+      color: $text-color;
+      box-shadow: none;
+    }
   }
-}
 
-.dice-button {
-  border-radius: 0 0 20px 0;
-  border: none;
+  .dice-button {
+    border-radius: 0 0 20px 0;
+    border: none;
 
-  &:focus {
-    box-shadow: none;
+    &:focus {
+      box-shadow: none;
+    }
   }
 }
 
@@ -35,7 +37,7 @@
 }
 
 .throw-cell {
-  color: white;
+  color: $text-color;
   display: flex;
   align-items: center;
   margin: 0.5rem;
@@ -45,7 +47,7 @@
 }
 
 .common {
-  background: rgba(71, 118, 230, 0.3);
+  background: $active-color;
 }
 
 .critical {
