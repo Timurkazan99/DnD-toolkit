@@ -18,7 +18,7 @@ const ThrowHistory = () => {
       <div ref={throwsBox} className="throw-container">
         {
           throws.map(({throwDice, type}) => (
-            <div className={`throw-cell ${type}`}>{throwDice}</div>
+            <ThrowCell type={type} throwDice={throwDice}/>
           ))
         }
       </div>

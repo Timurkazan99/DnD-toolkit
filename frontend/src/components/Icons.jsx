@@ -27,4 +27,4 @@ Icon.defaultProps = {
   className: null
 }
 
-export default Icon;
+export default React.memo(Icon);

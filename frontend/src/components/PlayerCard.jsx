@@ -95,4 +95,8 @@ PlayerCard.defaultProps = {
   charisma: 10
 }
 
-export default PlayerCard;
+export default React.memo(PlayerCard, ({card: prevCard}, {card: nextCard}) => {
+  const prevPropsStr = JSON.stringify(prevCard);
+  const nextPropsStr = JSON.stringify(nextCard);
+  return prevPropsStr === nextPropsStr;
+});

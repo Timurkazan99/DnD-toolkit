@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import Icon from "./Icons.jsx";
 import {batch, useDispatch, useSelector} from "react-redux";
-import {getAbilitiesByEnemyId} from "../store/selectors";
+import {makeGetAbilitiesByEnemyId} from "../store/selectors";
 import AbilityItem from "./AbilityItem.jsx";
 import {onShow} from "../store/reducers/UiSlice";
 import {actions as cardActions} from "../store/reducers/CardSlice";
 
 const AbilityList = ({enemyId}) => {
+  const getAbilitiesByEnemyId = useMemo(makeGetAbilitiesByEnemyId, []);
   const dispatch = useDispatch();
-  const abilities = useSelector((state) => getAbilitiesByEnemyId(state, enemyId));
+  const abilities = useSelector((state) => getAbilitiesByEnemyId(state, enemyId), (prev, next) => {
+    console.log(prev, next);
+    return prev.length === next.length
+  });
   const onClick = () => {
     batch(() => {
       dispatch(cardActions.setSelected(enemyId))

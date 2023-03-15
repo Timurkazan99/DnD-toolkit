@@ -8,7 +8,11 @@ import {actions as cardActions} from "../store/reducers/CardSlice";
 
 const BattleOrder = () => {
   const dispatch = useDispatch();
-  const players = useSelector(selectors.selectAll);
+  const players = useSelector(selectors.selectAll, (prev, next) => {
+    const prevInitiatives = JSON.stringify(prev.map(({initiative}) => initiative));
+    const nextInitiatives = JSON.stringify(next.map(({initiative}) => initiative));
+    return prevInitiatives === nextInitiatives;
+  });
   const [active, setActive] = useState(0);
   const initiativeBox = useRef(null);
   const index = active % players.length;
@@ -59,12 +63,12 @@ const BattleOrder = () => {
       >
         {[...players]
           .sort((a, b) => parseFloat(b.initiative) - parseFloat(a.initiative))
-          .map(({id, name, initiative}, index) => (
+          .map((card, index) => (
           <InitiativeCell
             active={index === activeIndex}
-            name={name}
-            initiative={initiative}
-            id={id}
+            name={card.name}
+            initiative={card.initiative}
+            card={card}
           />
         ))}
       </div>

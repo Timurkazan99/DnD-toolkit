@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import PlayerCard from "./PlayerCard.jsx";
 import Icon from "./Icons.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {onShow} from "../store/reducers/UiSlice";
-import {getCardsByType} from "../store/selectors";
+import {makeGetCardsByType} from "../store/selectors";
 
 const map = {
   enemies: {
@@ -20,7 +20,12 @@ const map = {
 
 const CardList = ({type}) => {
   const {className, modalName, cardType} = map[type];
-  const cards = useSelector((state) => getCardsByType(state, cardType));
+  const getCardsByType = useMemo(makeGetCardsByType, []);
+  const cards = useSelector((state) => getCardsByType(state, cardType), (prev, next) => {
+    const prevStr = JSON.stringify(prev);
+    const nextStr = JSON.stringify(next);
+    return prevStr === nextStr;
+  });
   const dispatch = useDispatch();
 
   return (

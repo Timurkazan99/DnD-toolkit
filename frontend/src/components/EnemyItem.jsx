@@ -26,4 +26,4 @@ const EnemyItem = ({name, index, id, enemyId}) => {
   );
 };
 
-export default EnemyItem;
+export default React.memo(EnemyItem);

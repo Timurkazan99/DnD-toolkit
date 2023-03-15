@@ -1,12 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react';
 import {actions as cardActions} from "../store/reducers/CardSlice";
-import {selectors as cardSelectors} from "../store/reducers/CardSlice";
-import useDebounce from "../hooks/useDebounce";
 import InteractiveInput from "./InteractiveInput.jsx";
 
-const InitiativeCell = ({id, active}) => {
-  const card = useSelector((state) => cardSelectors.selectById(state, id));
+const InitiativeCell = ({card, active}) => {
 
   return (
     <div
@@ -14,7 +10,7 @@ const InitiativeCell = ({id, active}) => {
     >
       <InteractiveInput
         inputClass="initiative-input"
-        id={id}
+        id={card.id}
         value={card.initiative}
         name="initiative"
         action={cardActions.updateCard}
@@ -24,4 +20,4 @@ const InitiativeCell = ({id, active}) => {
   );
 };
 
-export default InitiativeCell;
+export default React.memo(InitiativeCell);
