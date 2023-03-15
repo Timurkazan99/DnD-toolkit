@@ -4,7 +4,7 @@ import {useFormik} from "formik";
 import {onHide} from "../../store/reducers/UiSlice";
 import Modal from "../../atoms/Modal";
 import FloatingLabel from "../../atoms/FloatingLabel";
-import {getActiveAbility, getModalName} from "../../store/selectors";
+import {getActiveAbility} from "../../store/selectors";
 import {actions as abilityActions} from "../../store/reducers/AbilitiesSlice";
 import CommonFooter from "./CommonFooter.jsx";
 import "../../styles/customModal.scss";

@@ -1,16 +1,7 @@
 @import "mixins";
 
 .sidebar {
-  height: calc(100VH - 54px);
-  width: 15%;
-  margin: 0 .5rem;
-  border-radius: 20px;
-  background: $second-color;
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 54px;
-  box-shadow: 0 4px rgba(0, 0, 0, .25);
+  @include sidebar;
 }
 
 .battleOrder {
