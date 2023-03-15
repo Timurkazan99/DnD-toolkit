@@ -80,3 +80,15 @@ p {
     }
   }
 }
+
+.row {
+  --col-space: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-.5 * var(--col-space));
+  margin-left: calc(-.5 * var(--col-space));
+
+  .col {
+    flex: 1 0 0;
+  }
+}

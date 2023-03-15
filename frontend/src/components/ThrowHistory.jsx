@@ -1,21 +1,17 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useEffect} from 'react';
 import "../styles/throwHistory.scss"
-import {InputGroup, Form, Button} from "react-bootstrap";
-import {throwDice} from "../utils/diceRoll";
-import {useDispatch, useSelector} from "react-redux";
-import {addThrow} from "../store/reducers/UiSlice";
+
+import {useSelector} from "react-redux";
+import ThrowInput from "./ThrowInput.jsx";
+import ThrowCell from "./ThrowCell.jsx";
 
 const ThrowHistory = () => {
-  const dispatch = useDispatch();
-  const [value, setValue] = useState();
   const throws = useSelector((state) => state.ui.throwHistory);
   const throwsBox = useRef(null);
 
-  const onClick = () => {
-    const result = throwDice(value);
-    dispatch(addThrow(result));
+  useEffect(() => {
     throwsBox.current.scrollTop = 999999;
-  }
+  }, [throws]);
 
   return (
     <div className="sidebar throwHistory">
@@ -26,19 +22,7 @@ const ThrowHistory = () => {
           ))
         }
       </div>
-      <InputGroup className="dice-group">
-        <Form.Control
-          className="dice-input"
-          value={value}
-          onChange={({target}) => setValue(target.value)}
-        />
-        <button
-          className="custom-button dice-button"
-          onClick={onClick}
-        >
-          Roll
-        </button>
-      </InputGroup>
+      <ThrowInput />
     </div>
   );
 };

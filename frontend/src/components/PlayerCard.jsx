@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {Card} from "react-bootstrap";
+import React from 'react';
 import Icon from "./Icons.jsx";
 import "../styles/card.scss";
 import EnemyList from "./EnemyList.jsx";
@@ -16,8 +15,8 @@ const PlayerCard = ({card}) => {
   const dispatch = useDispatch()
 
   return (
-    <Card className="player-card">
-      <Card.Header className="player-card-header">
+    <div className="player-card">
+      <div className="player-card-header">
         <a
           className={card.type === "player" ? `card-name player` : 'card-name'}
           onClick={() => {
@@ -46,8 +45,8 @@ const PlayerCard = ({card}) => {
             </div>
           )
         }
-      </Card.Header>
-      <Card.Body className="player-card-body">
+      </div>
+      <div className="player-card-body">
         <div className="stat-wrapper">
           {skills.map((skill) => (
             <div>
@@ -63,10 +62,10 @@ const PlayerCard = ({card}) => {
             </div>
           ))}
         </div>
-      </Card.Body>
+      </div>
       {
         (card.type === "enemy") && (
-          <Card.Footer className="player-card-footer">
+          <div className="player-card-footer">
             <AbilityList
               enemyId={card.id}
             />
@@ -76,10 +75,10 @@ const PlayerCard = ({card}) => {
               enemyId={card.id}
               lastIndex={card.lastCreatureIndex}
             />
-          </Card.Footer>
+          </div>
         )
       }
-    </Card>
+    </div>
   );
 };
 

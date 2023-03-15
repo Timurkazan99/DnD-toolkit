@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from "react-bootstrap";
 
 const CommonFooter = ({edit, add, remove, update}) => {
   return (

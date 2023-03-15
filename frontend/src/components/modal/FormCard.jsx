@@ -1,10 +1,9 @@
 import React from 'react';
 import FloatingLabel from "../../atoms/FloatingLabel";
-import {Col, Form, Row} from "react-bootstrap";
 
 const FormCard = ({formik}) => {
   return (
-    <Form>
+    <form>
       <FloatingLabel
         label="Имя"
         className="mb-3"
@@ -17,8 +16,8 @@ const FormCard = ({formik}) => {
         />
       </FloatingLabel>
       <hr/>
-      <Row>
-        <Col>
+      <div className="row">
+        <div className="col">
           <FloatingLabel
             label="Сила"
             className="mb-3"
@@ -55,8 +54,8 @@ const FormCard = ({formik}) => {
               placeholder="Выносливость"
             />
           </FloatingLabel>
-        </Col>
-        <Col>
+        </div>
+        <div className="col">
           <FloatingLabel
             label="Интелект"
             className="mb-3"
@@ -92,11 +91,11 @@ const FormCard = ({formik}) => {
               placeholder="Харизма"
             />
           </FloatingLabel>
-        </Col>
-      </Row>
+        </div>
+      </div>
       <hr />
-      <Row>
-        <Col>
+      <div className="row">
+        <div className="col">
           <FloatingLabel
             label="Скорость"
             className="mb-3"
@@ -121,8 +120,8 @@ const FormCard = ({formik}) => {
               placeholder="Класс Брони"
             />
           </FloatingLabel>
-        </Col>
-        <Col>
+        </div>
+        <div className="col">
           <FloatingLabel
             label="Пас. внимание"
             className="mb-3"
@@ -147,9 +146,9 @@ const FormCard = ({formik}) => {
               placeholder="Инициатива"
             />
           </FloatingLabel>
-        </Col>
-      </Row>
-    </Form>
+        </div>
+      </div>
+    </form>
   );
 };
 

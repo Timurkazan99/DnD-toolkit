@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {batch, useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
 import {onHide} from "../../store/reducers/UiSlice";
-import {Form} from "react-bootstrap";
 import Modal from "../../atoms/Modal";
 import FloatingLabel from "../../atoms/FloatingLabel";
 import {getActiveAbility, getModalName} from "../../store/selectors";
@@ -75,7 +74,7 @@ const AddAbility = ({modalName}) => {
         <h5>{modal?.title}</h5>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <form>
           <FloatingLabel
             label="Название"
             className="mb-3"
@@ -100,7 +99,7 @@ const AddAbility = ({modalName}) => {
               onChange={formik.handleChange}
             />
           </FloatingLabel>
-        </Form>
+        </form>
       </Modal.Body>
       <Modal.Footer>
         <CommonFooter

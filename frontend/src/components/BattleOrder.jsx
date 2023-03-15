@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Button} from "react-bootstrap";
 import "../styles/battleOrder.scss";
 import InitiativeCell from "./InitiativeCell.jsx";
 import Icon from "./Icons.jsx";

@@ -7,12 +7,16 @@
   border: rgba(0, 0, 0, .25) 1px solid;
   background: $inactive-color;
   width: 100%;
+  display: flex;
 
   .dice-input {
     border-radius: 0 0 0 20px;
     background: $inactive-color;
     border: none;
     color: $text-color;
+    padding: 0 0.75em;
+    height: 100%;
+    flex-grow: 1;
 
     &:focus {
       background: $active-color;
