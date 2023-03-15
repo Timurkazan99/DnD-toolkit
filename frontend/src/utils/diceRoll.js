@@ -12,7 +12,7 @@ const mapInfo = {
     dflt: 20,
   },
   modifier: {
-    regex: /\+\d{1,}/g,
+    regex: /[+\-]\d{1,}/g,
     func: (str, regex) => str?.match(regex)[0],
     dflt: 0,
   }
