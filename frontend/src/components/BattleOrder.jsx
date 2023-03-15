@@ -65,6 +65,7 @@ const BattleOrder = () => {
           .sort((a, b) => parseFloat(b.initiative) - parseFloat(a.initiative))
           .map((card, index) => (
           <InitiativeCell
+            key={index}
             active={index === activeIndex}
             name={card.name}
             initiative={card.initiative}

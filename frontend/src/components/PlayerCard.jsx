@@ -48,16 +48,21 @@ const PlayerCard = ({card}) => {
       </div>
       <div className="player-card-body">
         <div className="stat-wrapper">
-          {skills.map((skill) => (
-            <div>
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+            >
               <Icon icon={skill} className="me-1"/>
               <label>{card[skill]}</label>
             </div>
           ))}
         </div>
         <div className="stat-wrapper">
-          {abilities.map((ability) => (
-            <div className="ability-box">
+          {abilities.map((ability, index) => (
+            <div
+              key={index}
+              className="ability-box"
+            >
               {card[ability]}
             </div>
           ))}

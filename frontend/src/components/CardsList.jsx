@@ -31,7 +31,10 @@ const CardList = ({type}) => {
   return (
     <div className={className}>
       {cards.map((card) => (
-        <PlayerCard card={card}/>
+        <PlayerCard
+          key={card.id}
+          card={card}
+        />
       ))}
       <div className="button-wrapper">
         <button
