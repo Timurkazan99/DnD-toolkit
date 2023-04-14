@@ -4,6 +4,7 @@
   css-mqpacker - HAS BEEN REMOVED! Do not use!
 */
 
+/* eslint-disable global-require */
 module.exports = {
   plugins: [
     require('autoprefixer'),
@@ -12,10 +13,11 @@ module.exports = {
         'default',
         {
           discardComments: {
-            removeAll: true
-          }
-        }
-      ]
-    })
-  ]
-}
+            removeAll: true,
+          },
+        },
+      ],
+    }),
+  ],
+};
+/* eslint-enable global-require */

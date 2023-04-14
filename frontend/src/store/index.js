@@ -8,8 +8,8 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { reducer as abilitiesSlice } from './reducers/AbilitiesSlice';
 import { reducer as uiSlice } from './reducers/UiSlice';
 import { reducer as cardSlice } from './reducers/CardSlice';
@@ -19,7 +19,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: ['ui'],
-}
+};
 
 const rootReducer = combineReducers({
   abilities: abilitiesSlice,
@@ -28,16 +28,15 @@ const rootReducer = combineReducers({
   creatures: creatureSlice,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
 export const persistor = persistStore(store);

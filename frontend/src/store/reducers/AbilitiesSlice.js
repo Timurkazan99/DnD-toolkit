@@ -1,10 +1,11 @@
-import {createSlice, createEntityAdapter} from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
 const abilityAdapter = createEntityAdapter();
 const initialState = abilityAdapter.getInitialState({
   active: null,
 });
 
+/* eslint-disable no-param-reassign */
 export const AbilitySlice = createSlice({
   name: 'abilities',
   initialState,
@@ -12,11 +13,12 @@ export const AbilitySlice = createSlice({
     addAbility: abilityAdapter.addOne,
     removeAbility: abilityAdapter.removeOne,
     updateAbility: abilityAdapter.updateOne,
-    setActive: (state, {payload}) => {
+    setActive: (state, { payload }) => {
       state.active = payload;
     },
   },
 });
+/* eslint-enable no-param-reassign */
 
 export const selectors = abilityAdapter.getSelectors((state) => state.abilities);
 export const { actions } = AbilitySlice;

@@ -1,3 +1,3 @@
-import FloatingLabel from "./FloatingLabel.jsx";
+import FloatingLabel from './FloatingLabel.jsx';
 
 export default FloatingLabel;

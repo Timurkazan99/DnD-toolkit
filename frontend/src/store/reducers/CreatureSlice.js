@@ -1,5 +1,7 @@
-import {createEntityAdapter, createSlice, current} from "@reduxjs/toolkit";
-import {actions as cardActions} from "./CardSlice";
+/* eslint-disable import/no-cycle */
+import { createEntityAdapter, createSlice, current } from '@reduxjs/toolkit';
+import { actions as cardActions } from './CardSlice';
+/* eslint-enable import/no-cycle */
 
 const creatureAdapter = createEntityAdapter();
 const initialState = creatureAdapter.getInitialState();
@@ -9,23 +11,23 @@ export const creatureSlice = createSlice({
   initialState,
   reducers: {
     addCreature: creatureAdapter.addOne,
-    delCreature: (state, {payload}) => {
-      creatureAdapter.removeOne(state, payload.id)
+    delCreature: (state, { payload }) => {
+      creatureAdapter.removeOne(state, payload.id);
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(cardActions.removeCard, (state, {payload}) => {
+      .addCase(cardActions.removeCard, (state, { payload }) => {
         const creatures = Object.values(current(state.entities));
         const creaturesIdsForRemove = [];
-        creatures.forEach(({id, enemyId}) => {
-          if(enemyId === payload) {
+        creatures.forEach(({ id, enemyId }) => {
+          if (enemyId === payload) {
             creaturesIdsForRemove.push(id);
           }
-        })
-        creatureAdapter.removeMany(state, creaturesIdsForRemove)
-      })
-  }
+        });
+        creatureAdapter.removeMany(state, creaturesIdsForRemove);
+      });
+  },
 });
 
 export const selectors = creatureAdapter.getSelectors((state) => state.creatures);
