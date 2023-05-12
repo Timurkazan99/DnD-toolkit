@@ -1,41 +1,41 @@
 @import "mixins";
 
 .edit-button {
-  @include icon-button($second-color, $active-color, 3px);
+  @include icon-button(var(--second-color), var(--active-color), 3px);
 }
 
 .ability-popover {
 
-  background: $base-color;
-  border: 1px solid $active-color;
+  background: var(--base-color);
+  border: 1px solid var(--active-color);
   box-shadow: 4px 4px 3px rgba(0, 0, 0, .25);
 
   .popover-arrow {
     &::before {
-      border-bottom-color: $active-color;
+      border-bottom-color: var(--active-color);
     }
     &::after {
-      border-bottom-color: $second-color;
+      border-bottom-color: var(--second-color);
     }
   }
 
   .ability-popover-header {
-    background: $second-color;
-    color: $text-color;
+    background: var(--second-color);
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     &::before {
-      border-bottom-color: $second-color;
+      border-bottom-color: var(--second-color);
     }
 
     .close-button {
-      @include icon-button($second-color, darkred, 50%);
+      @include icon-button(var(--second-color), darkred, 50%);
     }
   }
 
   .ability-popover-body {
-    color: $text-color;
+    color: var(--text-color);
   }
 }

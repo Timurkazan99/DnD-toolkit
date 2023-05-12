@@ -1,7 +1,22 @@
 @import "mixins";
+/*
+$second-color: #464866;
+$base-color: darken(var(--second-color), 20%);
+$inactive-text: #29648A;
+$text-color: #2E9CCA;
+$inactive-color: #25274D;
+$active-color: lighten(var(--inactive-color), 20%);
+*/
 
 html {
-  background: $base-color;
+  --second-color: #464866;
+  --base-color: #383A52;
+  --inactive-text: #29648A;
+  --text-color: #2E9CCA;
+  --inactive-color: #25274D;
+  --active-color: #3F4282;
+
+  background: var(--base-color);
   > * {
     background: inherit;
   }
@@ -13,21 +28,21 @@ html {
 }
 
 a {
-  color: $text-color;
+  color: var(--text-color);
   text-decoration: none;
 
   &:hover {
-    color: $text-color;
+    color: var(--text-color);
     text-decoration: none;
   }
 
   &:not([href]):not([class]) {
-    color: $text-color;
+    color: var(--text-color);
     text-decoration: none;
   }
 
   &:not([href]):not([class]):hover {
-    color: $text-color;
+    color: var(--text-color);
     text-decoration: none;
   }
 }
@@ -44,7 +59,7 @@ p {
 .line {
   height: 1px;
   width: 100%;
-  background: $second-color;
+  background: var(--second-color);
 }
 
 ::-webkit-scrollbar {
@@ -54,7 +69,7 @@ p {
 .delete-button {
   border: none;
   background: none;
-  color: $text-color;
+  color: var(--text-color);
   padding: 0;
 
   &:hover {
@@ -63,14 +78,14 @@ p {
 }
 
 .custom-button {
-  border: $inactive-color 1px solid;
+  border: var(--inactive-color) 1px solid;
   border-radius: 20px;
   background: transparent;
-  color: $text-color;
+  color: var(--text-color);
   padding: 0.5rem;
 
   &:hover {
-    background: $active-color;
+    background: var(--active-color);
   }
 
   &.delete {

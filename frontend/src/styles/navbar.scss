@@ -1,3 +1,5 @@
+@import "mixins";
+
 .navbar {
   position: relative;
   display: flex;
@@ -6,9 +8,11 @@
   justify-content: flex-start;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: rgb(33,37,41);
+  background-color: var(--inactive-color);
 
   .container {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
@@ -23,6 +27,21 @@
     }
     @media (min-width: 1400px) {
       max-width: 1320px;
+    }
+  }
+
+  .theme-button {
+    --size: 24px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    height: var(--size);
+    width:  var(--size);
+    padding: 0;
+    color: var(--text-color);
+
+    &:hover {
+      background: var(--active-color);
     }
   }
 }

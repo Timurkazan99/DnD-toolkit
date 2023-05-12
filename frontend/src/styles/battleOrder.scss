@@ -9,7 +9,7 @@
   .order-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px $base-color;
+    border-bottom: solid 1px var(--base-color);
 
     .initiative-button {
       border: none;
@@ -29,17 +29,17 @@
 }
 
 .initiative-cell {
-  color: $text-color;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   margin: 0.5rem;
   border-radius: 14px;
   padding: 0 1rem;
-  background: $inactive-color;
+  background: var(--inactive-color);
   height: 28px;
 
   &.active {
-    background: $active-color;
+    background: var(--active-color);
   }
 
   .initiative-input {

@@ -11,7 +11,9 @@ const statusMap = {
   'delete': '/assets/img/delete.svg#delete',
   'previous': '/assets/img/previous.svg#previous',
   'next': '/assets/img/next.svg#next',
-  'edit': '/assets/img/edit.svg#edit'
+  'edit': '/assets/img/edit.svg#edit',
+  'bright': '/assets/img/bright.svg#bright',
+  'dark': '/assets/img/dark.svg#dark'
 }
 
 const Icon = ({icon, className}) => {

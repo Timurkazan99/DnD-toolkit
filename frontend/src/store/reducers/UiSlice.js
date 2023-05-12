@@ -4,6 +4,7 @@ const initialState = {
   modalName: '',
   throwHistory: [],
   scrollHeight: 0,
+  theme: 'bright',
 };
 
 /* eslint-disable no-param-reassign */
@@ -23,11 +24,14 @@ export const UiSlice = createSlice({
     setScroll: (state, { payload }) => {
       state.scrollHeight = payload;
     },
+    changeTheme: (state) => {
+      state.theme = state.theme === 'bright' ? 'dark' : 'bright';
+    }
   },
 });
 /* eslint-enable no-param-reassign */
 
 export const {
-  onShow, onHide, addThrow, setScroll,
+  onShow, onHide, addThrow, setScroll, changeTheme
 } = UiSlice.actions;
 export const { reducer } = UiSlice;

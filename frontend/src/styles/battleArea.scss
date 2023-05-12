@@ -25,7 +25,7 @@
 .hp-button {
   border: none;
   background: none;
-  color: $text-color;
+  color: var(--text-color);
   padding: 0;
 
   &:first-child {
@@ -35,7 +35,7 @@
 
 .enemy-header {
   display: flex;
-  color: $text-color;
+  color: var(--text-color);
   font-size: 32px;
   justify-content: center;
   justify-items: center;
@@ -43,7 +43,7 @@
   .line {
     align-self: center;
     height: 3px;
-    border: $second-color;
+    border: var(--second-color);
     border-radius: 1.5px;
   }
 
@@ -65,14 +65,14 @@
   width: 180px;
   border-radius: 20px;
   border: none;
-  color: $text-color;
+  color: var(--text-color);
   align-self: center;
-  background: $second-color;
+  background: var(--second-color);
   transition: .15s;
   box-shadow: 0 4px rgba(0, 0, 0, .25);
 
   &:hover {
-    color: $text-color;
-    background: $active-color;
+    color: var(--text-color);
+    background: var(--active-color);
   }
 }
