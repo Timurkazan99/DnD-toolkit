@@ -4,7 +4,8 @@
   "description": "Helper for dnd",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --prefix frontend",
+    "dev": "npm run dev --prefix frontend"
   },
   "repository": {
     "type": "git",
