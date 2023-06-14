@@ -26,12 +26,12 @@ export const UiSlice = createSlice({
     },
     changeTheme: (state) => {
       state.theme = state.theme === 'bright' ? 'dark' : 'bright';
-    }
+    },
   },
 });
 /* eslint-enable no-param-reassign */
 
 export const {
-  onShow, onHide, addThrow, setScroll, changeTheme
+  onShow, onHide, addThrow, setScroll, changeTheme,
 } = UiSlice.actions;
 export const { reducer } = UiSlice;
